@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY | Paris 1889</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="scanlines"></div>
+
+    <nav class="navbar">
+        <div class="logo">AGENCY<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#destinations">Chronologies</a></li>
+            <li><a href="#" class="btn-outline">Réserver</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="dest-hero" style="background-image: url('images/paris.png');">
+            <h1>Paris <span class="gold-text">1889</span></h1>
+        </section>
+
+        <section class="dest-content-grid">
+            <aside class="tech-sidebar">
+                <div class="data-block">
+                    <span class="data-label"><i class="ph ph-warning-circle"></i> Niveau de Danger</span>
+                    <div class="data-value danger-meter">
+                        <span>Isolé</span> / Faible / Moyen / Élevé / Extrême
+                    </div>
+                </div>
+                <div class="data-block">
+                    <span class="data-label"><i class="ph ph-map-pin"></i> Coordonnées Temporelles</span>
+                    <div class="data-value">48.8566° N / 2.3522° E</div>
+                    <div class="data-value" style="font-size: 0.9rem; opacity: 0.7;">Incision: 14 Juillet 1889</div>
+                </div>
+                <div class="data-block">
+                    <span class="data-label"><i class="ph ph-eye"></i> Points d'Intérêt</span>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>— Exposition Universelle</li>
+                        <li>— Chantier Tour Eiffel (Finitions)</li>
+                        <li>— Galerie des Machines</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="main-narrative">
+                <h2>L'Apogée de la Belle Époque</h2>
+                <p>Plongez au cœur de l'effervescence parisienne lors de l'événement qui a défini la fin du 19ème siècle. Notre technologie de camouflage vous permet de vous fondre dans la foule des 32 millions de visiteurs venus admirer les prouesses industrielles.</p>
+                <p>Marchez sous la Tour Eiffel, encore rougeoyante de sa peinture d'origine, et sentez l'odeur du charbon et du progrès. C'est une époque d'optimisme technologique, un miroir fascinant de notre propre futur.</p>
+
+                <div class="booking-cta-block">
+                    <h3>Protocole de Départ</h3>
+                    <p>Les visas temporels pour 1889 sont disponibles. Configuration standard incluant costume d'époque et monnaie locale (Francs-Or).</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">
+                        Initialiser la Réservation <i class="ph ph-ticket"></i>
+                    </button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="chatbot-wrapper">
+        <button id="chat-toggle" class="chat-btn">
+            <i class="ph ph-chat-teardrop-text"></i>
+            <span class="status-dot"></span>
+        </button>
+
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <div class="ai-avatar">
+                    <div class="pulse"></div>
+                </div>
+                <div>
+                    <h4>Chrono-Guide v4.2</h4>
+                    <span class="status-text">En ligne • Sécurisé</span>
+                </div>
+                <button id="chat-close" class="close-btn"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div class="chat-body" id="chat-body">
+                <div class="message bot">
+                    <p>Bienvenue, Voyageur. Je suis connecté au réseau local. Une question sur cette époque ?</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Posez une question...">
+                <button id="send-btn"><i class="ph ph-paper-plane-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

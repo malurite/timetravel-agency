@@ -1,0 +1,522 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    --bg-void: #050505;
+    --bg-card: #0a0a0a;
+    --accent-gold: #d4af37; /* Or Champagne */
+    --accent-gold-dim: rgba(212, 175, 55, 0.2);
+    --text-white: #f0f0f0;
+    --text-muted: #888888;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+    
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Animation d'apparition de la page */
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    background-color: var(--bg-void);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+    animation: pageFadeIn 0.8s ease-out forwards;
+}
+
+/* --- BACKGROUND FX --- */
+
+.stars-bg {
+    position: fixed; /* L'image reste fixe quand on scrolle */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place l'image DERRIÈRE tout le reste */
+    
+    /* Chargement de l'image */
+    background-image: url('images/bg-main.png');
+    background-size: cover; /* L'image couvre tout l'écran sans se déformer */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition */
+    
+    /* Optionnel : Réduit légèrement l'opacité pour que le texte reste très lisible.
+       Ajustez entre 0.4 et 1.0 selon vos goûts. */
+    opacity: 0.8; 
+    /* Ajoute un léger flou pour donner de la profondeur */
+    filter: blur(2px);
+}
+
+.scanlines {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.3;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; text-transform: uppercase; letter-spacing: 2px; }
+.gold-text { color: var(--accent-gold); }
+
+/* --- NAVIGATION --- */
+.navbar {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem 5%; /* Un peu moins de hauteur pour être plus discret */
+    
+    /* Positionnement */
+    position: fixed; /* Fixe en haut de l'écran (reste visible au scroll) */
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 1000; /* Reste au-dessus de tout */
+    
+    /* LE FOND (Background) */
+    background: rgba(5, 5, 5, 0.85); /* Noir très profond à 85% d'opacité */
+    backdrop-filter: blur(12px);     /* Le flou derrière la barre (effet verre) */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2); /* Ligne dorée subtile en bas */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Ombre portée pour le détacher */
+}
+
+.logo { font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 4px; font-weight: 700; }
+.dot { color: var(--accent-gold); }
+
+.nav-links { display: flex; gap: 3rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-white); font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent-gold); }
+
+.btn-outline {
+    border: 1px solid var(--accent-gold);
+    padding: 0.5rem 1.5rem;
+    transition: all 0.3s ease;
+}
+.btn-outline:hover { background: var(--accent-gold); color: var(--bg-void); }
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10%;
+    position: relative;
+    padding-top: 80px;
+}
+
+.hero-content { max-width: 600px; z-index: 2; }
+.subtitle { color: var(--accent-gold); font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 1rem; }
+.hero h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1.5rem; }
+.description { color: var(--text-muted); margin-bottom: 2.5rem; max-width: 400px; }
+
+.btn-primary {
+    background: transparent;
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 1rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-primary:hover {
+    background: var(--accent-gold);
+    color: var(--bg-void);
+    box-shadow: 0 0 20px var(--accent-gold-dim);
+}
+
+/* Animation Cercle */
+.hero-visual { position: absolute; right: 10%; top: 50%; transform: translateY(-50%); width: 400px; height: 400px; }
+.time-ring {
+    position: absolute; width: 100%; height: 100%;
+    border: 1px solid var(--accent-gold-dim);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+.inner { width: 70%; height: 70%; top: 15%; left: 15%; border-color: var(--accent-gold); border-width: 0.5px; animation-direction: reverse; }
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* --- DESTINATIONS --- */
+.destinations { padding: 5rem 10%; background: #080808; }
+.section-header { margin-bottom: 4rem; display: flex; align-items: center; gap: 2rem; }
+.line { height: 1px; background: var(--accent-gold-dim); flex-grow: 1; }
+
+.cards-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
+}
+
+.card {
+    background: var(--bg-card);
+    border: var(--glass-border);
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+    cursor: pointer;
+}
+
+.card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
+
+.card-image {
+    display: block; /* Important car une balise <a> est "inline" par défaut */
+    height: 60%; 
+    width: 100%;
+    background-size: cover; 
+    background-position: center;
+    filter: grayscale(100%); 
+    transition: 0.5s ease;
+}
+.card:hover .card-image { filter: grayscale(0%); height: 50%; }
+
+.card-content { padding: 1.5rem; display: flex; flex-direction: column; height: 100%; }
+.card-meta { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent-gold); margin-bottom: 0.5rem; }
+.card p { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+.btn-text {
+    background: none; 
+    border: none; 
+    color: var(--text-white);
+    margin-top: auto; 
+    padding-bottom: 1rem; 
+    cursor: pointer;
+    text-align: left; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    font-family: var(--font-body); 
+    transition: 0.3s;
+    
+    /* Ajouts pour gérer le lien */
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9rem; /* Réajustement taille */
+}
+.btn-text:hover { 
+    color: var(--accent-gold); 
+    padding-left: 10px; 
+}
+
+/* --- CHATBOT (GLASSMORPHISM) --- */
+.chatbot-wrapper {
+    position: fixed !important; /* Force la position fixe */
+    bottom: 20px;
+    right: 20px;
+    z-index: 2147483647; /* Le chiffre maximum possible en CSS (au-dessus de tout) */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligne le chat et le bouton à droite */
+    pointer-events: none; /* Permet de cliquer à travers la zone vide */
+}
+
+/* Le Bouton Rond */
+.chat-btn {
+    pointer-events: auto; /* Réactive le clic sur le bouton */
+    width: 60px; height: 60px;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent-gold);
+    border-radius: 50%; 
+    color: var(--accent-gold);
+    font-size: 1.5rem; 
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transition: transform 0.3s;
+    
+    /* Centrage icône */
+    display: flex; align-items: center; justify-content: center;
+}
+
+.chat-btn:hover { transform: scale(1.1); }
+
+/* La Fenêtre de Chat */
+.chat-window {
+    pointer-events: auto; /* Réactive le clic sur la fenêtre */
+    width: 320px; 
+    height: 450px;
+    margin-bottom: 15px; /* Espace entre fenêtre et bouton */
+    
+    background: rgba(15, 15, 15, 0.98);
+    border: 1px solid var(--accent-gold);
+    border-radius: 12px;
+    display: flex; flex-direction: column;
+    
+    box-shadow: 0 5px 30px rgba(0,0,0,0.8);
+    
+    /* Animation d'ouverture */
+    transform-origin: bottom right;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.chat-window.hidden { 
+    opacity: 0; 
+    transform: scale(0.5) translateY(50px); /* Rétrécit vers le bouton */
+    pointer-events: none; /* Empêche de cliquer quand c'est caché */
+}
+.chat-header {
+    padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; gap: 1rem;
+}
+.ai-avatar { width: 30px; height: 30px; border: 1px solid var(--accent-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.pulse { width: 8px; height: 8px; background: var(--accent-gold); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+.chat-body { flex-grow: 1; padding: 1rem; overflow-y: auto; font-size: 0.9rem; }
+.message { margin-bottom: 1rem; padding: 0.8rem; border-radius: 8px; max-width: 85%; }
+.message.bot { background: rgba(255,255,255,0.05); border-left: 2px solid var(--accent-gold); }
+.message.user { background: var(--accent-gold); color: var(--bg-void); align-self: flex-end; margin-left: auto; text-align: right;}
+
+.chat-input-area {
+    padding: 1rem; border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex; gap: 0.5rem;
+}
+.chat-input-area input {
+    width: 100%; background: transparent; border: none; color: white; outline: none;
+    font-family: var(--font-body);
+}
+#send-btn { background: none; border: none; color: var(--accent-gold); cursor: pointer; font-size: 1.2rem; }
+.close-btn { background: none; border: none; color: #666; cursor: pointer; margin-left: auto;}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero { flex-direction: column; justify-content: center; text-align: center; padding-top: 4rem; }
+    .hero-visual { display: none; }
+    .navbar { flex-direction: column; gap: 1rem; }
+    .chat-window { width: 90%; right: 5%; bottom: 6rem; }
+}
+
+/* --- PAGES DESTINATIONS DÉTAILS --- */
+
+/* Hero Banner spécifique */
+.dest-hero {
+    height: 50vh;
+    background-size: cover; background-position: center;
+    position: relative;
+    display: flex; align-items: flex-end;
+    padding: 0 10% 4rem;
+    margin-top: 80px; /* Espace pour la navbar */
+    
+}
+
+/* Dégradé pour fondre l'image dans le noir */
+.dest-hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 60%;
+    background: linear-gradient(to top, var(--bg-void), transparent);
+}
+
+.dest-hero h1 { position: relative; z-index: 2; font-size: 4rem; text-shadow: 0 0 20px rgba(0,0,0,0.8); }
+
+/* Grille de contenu principal */
+.dest-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Colonne gauche plus petite que la droite */
+    gap: 4rem;
+    padding: 4rem 10%;
+    position: relative; z-index: 2;
+}
+
+/* Sidebar "Tech Data" */
+.tech-sidebar {
+    border-right: 1px solid var(--glass-border);
+    padding-right: 2rem;
+}
+
+.data-block { margin-bottom: 2.5rem; }
+.data-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-gold);
+    font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    display: block; margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 8px;
+}
+.data-value { font-size: 1.1rem; font-weight: 500; }
+.danger-meter span { color: var(--accent-gold); }
+
+/* Contenu Narratif */
+.main-narrative h2 { margin-bottom: 1.5rem; font-size: 2rem; }
+.main-narrative p { margin-bottom: 1.5rem; color: #ccc; font-size: 1.05rem; }
+
+/* Bloc d'appel à l'action (Booking) */
+.booking-cta-block {
+    margin-top: 3rem; padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    border: 1px solid var(--accent-gold-dim);
+    position: relative; overflow: hidden;
+}
+/* Petite ligne lumineuse en haut du bloc */
+.booking-cta-block::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+    background: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold);
+}
+
+/* Responsive pour les détails */
+@media (max-width: 768px) {
+    .dest-hero h1 { font-size: 2.5rem; }
+    .dest-content-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .tech-sidebar { border-right: none; border-bottom: 1px solid var(--glass-border); padding-bottom: 2rem; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;}
+}
+
+/* Animation de chargement (...) */
+.loading-dots span {
+    display: inline-block;
+    animation: bounce 1.4s infinite ease-in-out both;
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin: 0 2px;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* --- STYLE DU TEXTE RICHE DANS LE CHAT --- */
+
+/* Le gras en Or */
+.message strong {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+/* Les paragraphes */
+.message p {
+    margin-bottom: 0.5rem; /* Espace entre les paragraphes */
+}
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+/* Les listes à puces */
+.message ul, .message ol {
+    margin-left: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.message li {
+    margin-bottom: 0.2rem;
+}
+
+/* Liens (si l'IA en génère) */
+.message a {
+    color: var(--accent-gold);
+    text-decoration: underline;
+}
+
+/* --- QUIZ MODAL --- */
+.quiz-modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.5s;
+}
+
+.quiz-modal.active { opacity: 1; pointer-events: all; }
+
+.quiz-container {
+    background: var(--bg-card);
+    border: 1px solid var(--accent-gold);
+    width: 90%; max-width: 600px;
+    padding: 3rem;
+    position: relative;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
+}
+
+/* Barre de progression */
+.progress-bar {
+    width: 100%; height: 2px; background: rgba(255,255,255,0.1); margin-top: 1rem;
+}
+.progress-fill {
+    height: 100%; background: var(--accent-gold); width: 0%; transition: width 0.5s;
+}
+
+/* Options */
+.options-grid {
+    display: grid; gap: 1rem; margin-top: 2rem;
+}
+
+.option-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-white);
+    padding: 1rem; text-align: left; cursor: pointer;
+    font-family: var(--font-body); transition: 0.3s;
+    display: flex; justify-content: space-between;
+}
+
+.option-btn:hover {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.5s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Style du bouton "Trouver mon époque" (Quiz) */
+#start-quiz-btn {
+    background: rgba(255, 255, 255, 0.03); /* Très transparent */
+    backdrop-filter: blur(5px);            /* Effet verre */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    
+    /* Alignement de l'icône */
+    display: inline-flex; 
+    align-items: center; 
+    gap: 10px;
+    margin-left: 1rem;
+    border-radius: 2px; /* Coins légèrement adoucis mais techniques */
+}
+
+/* Au survol : le bouton s'illumine en blanc spectral */
+#start-quiz-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-white);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Responsive : sur mobile, on met le bouton sous l'autre */
+@media (max-width: 768px) {
+    #start-quiz-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* Style du texte généré par l'IA dans le Quiz */
+#result-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 2rem;
+    border-left: 2px solid var(--accent-gold); /* Une ligne dorée sur le côté */
+    padding-left: 1rem;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.05), transparent);
+}
+
+/* Enlève les marges par défaut des paragraphes générés par marked.js */
+#result-description p {
+    margin: 0;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY | Florence 1504</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="scanlines"></div>
+
+   <nav class="navbar">
+        <div class="logo">AGENCY<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#destinations">Chronologies</a></li>
+            <li><a href="#" class="btn-outline">Réserver</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="dest-hero" style="background-image: url('images/florence.png');">
+            <h1>Florence <span class="gold-text">1504</span></h1>
+        </section>
+
+        <section class="dest-content-grid">
+            <aside class="tech-sidebar">
+                <div class="data-block">
+                    <span class="data-label"><i class="ph ph-warning-circle"></i> Niveau de Danger</span>
+                    <div class="data-value danger-meter">
+                        Isolé / <span>Faible</span> / Moyen / Élevé / Extrême
+                    </div>
+                    <p style="font-size: 0.8rem; color: #666;">Risque politique mineur.</p>
+                </div>
+                <div class="data-block">
+                    <span class="data-label"><i class="ph ph-map-pin"></i> Coordonnées Temporelles</span>
+                    <div class="data-value">43.7696° N / 11.2558° E</div>
+                    <div class="data-value" style="font-size: 0.9rem; opacity: 0.7;">Incision: Printemps 1504</div>
+                </div>
+                <div class="data-block">
+                    <span class="data-label"><i class="ph ph-eye"></i> Points d'Intérêt</span>
+                    <ul style="list-style: none; margin-top: 0.5rem;">
+                        <li>— Dévoilement du David (Michel-Ange)</li>
+                        <li>— Atelier de Léonard de Vinci</li>
+                        <li>— Duomo (Santa Maria del Fiore)</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article class="main-narrative">
+                <h2>Le Berceau du Génie Humain</h2>
+                <p>Il n'existe aucun autre moment dans l'histoire où une telle concentration de génie artistique fut réunie au même endroit. En 1504, Léonard de Vinci et Michel-Ange travaillent tous deux dans cette ville, rivaux sous le soleil de Toscane.</p>
+                <p>Assistez à des débats philosophiques sur les piazza, observez les maîtres à l'œuvre, et vivez la Renaissance non pas comme une page d'histoire, mais comme une réalité vibrante.</p>
+
+                <div class="booking-cta-block">
+                    <h3>Protocole de Départ</h3>
+                    <p>Le pack "Mécène" inclut un accès prioritaire aux ateliers et des vêtements de soie florentine.</p>
+                    <button class="btn-primary" style="margin-top: 1rem;">
+                        Initialiser la Réservation <i class="ph ph-ticket"></i>
+                    </button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div class="chatbot-wrapper">
+        <button id="chat-toggle" class="chat-btn">
+            <i class="ph ph-chat-teardrop-text"></i>
+            <span class="status-dot"></span>
+        </button>
+
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <div class="ai-avatar">
+                    <div class="pulse"></div>
+                </div>
+                <div>
+                    <h4>Chrono-Guide v4.2</h4>
+                    <span class="status-text">En ligne • Sécurisé</span>
+                </div>
+                <button id="chat-close" class="close-btn"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div class="chat-body" id="chat-body">
+                <div class="message bot">
+                    <p>Bienvenue, Voyageur. Je suis connecté au réseau local. Une question sur cette époque ?</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Posez une question...">
+                <button id="send-btn"><i class="ph ph-paper-plane-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

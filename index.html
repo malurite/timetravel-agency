@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENCY | Chrono-Voyages de Luxe</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="stars-bg"></div>
+    <div class="scanlines"></div>
+
+    <nav class="navbar">
+        <div class="logo">AGENCY<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#destinations">Chronologies</a></li>
+            <li><a href="#" class="btn-outline">Réserver</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="subtitle" data-aos="fade-down" data-aos-delay="100">EST. 2049 — PARIS / NEW YORK / TOKYO</p>
+    
+            <h1 data-aos="fade-up" data-aos-delay="200">Le Temps est l'ultime <span class="gold-text">Luxe</span>.</h1>
+    
+            <p class="description" data-aos="fade-up" data-aos-delay="400">Évadez-vous du présent. Explorez le passé avec la sécurité et le raffinement du futur.</p>
+    
+            <a href="#destinations" class="btn-primary" data-aos="fade-up" data-aos-delay="600">
+            Initialiser le Saut <i class="ph ph-arrow-right"></i>
+            <button id="start-quiz-btn" class="btn-outline" style="margin-left: 1rem;">
+        <i class="ph ph-magic-wand"></i> Trouver mon époque
+        </button>
+            </a>
+        </div>
+        <div class="hero-visual">
+            <div class="time-ring"></div>
+            <div class="time-ring inner"></div>
+        </div>
+    </header>
+    <div id="quiz-modal" class="quiz-modal hidden">
+    <div class="quiz-container">
+        <button id="close-quiz" class="close-btn"><i class="ph ph-x"></i></button>
+        
+        <div class="quiz-header">
+            <h4>Calibrage Temporel</h4>
+            <div class="progress-bar">
+                <div class="progress-fill" id="quiz-progress"></div>
+            </div>
+        </div>
+
+        <div id="quiz-body">
+            <h3 id="question-text" class="fade-in">Initialisation du scan neural...</h3>
+            <div id="options-container" class="options-grid">
+                </div>
+        </div>
+
+        <div id="quiz-result" class="hidden fade-in">
+            <h3 class="gold-text">Destination Identifiée</h3>
+            <div id="result-destination" style="font-size: 2rem; margin: 1rem 0; font-family: 'Cinzel', serif;"></div>
+            
+            <p id="result-description" class="ai-typing">Analyse de compatibilité en cours...</p>
+            
+            <a id="result-link" href="#" class="btn-primary" style="margin-top: 2rem;">
+                Confirmer le Saut <i class="ph ph-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    </div>
+    <section id="destinations" class="destinations">
+        <div class="section-header">
+            <h2>Chronologie Disponible</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="cards-container">
+            
+            <article class="card" data-era="1889" data-aos="fade-up" data-aos-delay="0">
+                <a href="paris.html" class="card-image" style="background-image: url('images/paris.png');"></a>
+                
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span>FR-1889</span>
+                        <span>DANGER: 1/5</span>
+                    </div>
+                    <h3>Paris 1889</h3>
+                    <p>L'Exposition Universelle. Assistez à l'inauguration de la Dame de Fer.</p>
+                    
+                    <a href="paris.html" class="btn-text">
+                        Explorer <i class="ph ph-caret-right"></i>
+                    </a>
+                </div>
+            </article>
+
+           <article class="card" data-era="1504" data-aos="fade-up" data-aos-delay="150">
+                <a href="florence.html" class="card-image" style="background-image: url('images/florence.png');"></a>
+                
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span>IT-1504</span>
+                        <span>DANGER: 2/5</span>
+                    </div>
+                    <h3>Florence 1504</h3>
+                    <p>Le berceau de la Renaissance. Rencontrez Da Vinci et Michel-Ange.</p>
+                    
+                    <a href="florence.html" class="btn-text">
+                        Explorer <i class="ph ph-caret-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <article class="card" data-era="-66M" data-aos="fade-up" data-aos-delay="300">
+                <a href="cretaceous.html" class="card-image" style="background-image: url('images/dino.png');"></a>
+                
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span>PRE-66M</span>
+                        <span>DANGER: 5/5</span>
+                    </div>
+                    <h3>Crétacé Supérieur</h3>
+                    <p>La nature à l'état brut. Safari photo parmi les géants disparus (et élégants).</p>
+                    
+                    <a href="cretaceous.html" class="btn-text">
+                        Explorer <i class="ph ph-caret-right"></i>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <div class="chatbot-wrapper">
+        <button id="chat-toggle" class="chat-btn">
+            <i class="ph ph-chat-teardrop-text"></i>
+            <span class="status-dot"></span>
+        </button>
+
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <div class="ai-avatar"><div class="pulse"></div></div>
+                <div>
+                    <h4>Chrono-Guide v4.2</h4>
+                    <span class="status-text">En ligne • Sécurisé</span>
+                </div>
+                <button id="chat-close" class="close-btn"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div class="chat-body" id="chat-body">
+                <div class="message bot">
+                    <p>Bienvenue. Je suis le Chrono-Guide. Une question sur nos époques ?</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Posez une question...">
+                <button id="send-btn"><i class="ph ph-paper-plane-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
