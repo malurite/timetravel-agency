@@ -21,3 +21,10 @@ Webapp pour une agence de voyage temporel fictive, créée avec IA générative.
 
 ## 📄 Licence
 Projet pédagogique - M1/M2 Digital & IA
+
+## Crédits
+Groupe : Titouan Roussel, Harroue Loïc
+
+https://github.com/malurite/timetravel-agency
+
+https://malurite.github.io/timetravel-agency/index.html
