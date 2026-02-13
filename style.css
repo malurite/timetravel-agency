@@ -40,7 +40,7 @@ body {
     z-index: -1; /* Place l'image DERRIÈRE tout le reste */
     
     /* Chargement de l'image */
-    background-image: url('images/bg-main.png');
+    background-image: url('bg-main.png');
     background-size: cover; /* L'image couvre tout l'écran sans se déformer */
     background-position: center; /* Centre l'image */
     background-repeat: no-repeat; /* Empêche la répétition */
@@ -519,4 +519,5 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; text-transf
 /* Enlève les marges par défaut des paragraphes générés par marked.js */
 #result-description p {
     margin: 0;
+
 }
